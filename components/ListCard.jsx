@@ -54,7 +54,7 @@ const ListCard = ({ roomNo, creator, avatar, itemName, itemImage, createdDate })
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setPlay(true)}
-          className="w-full h-60 rounded-xl mt-3 relative flex justify-center items-center"
+          className="w-full h-80 rounded-xl mt-3 relative flex justify-center items-center"
         >
           <Image
             source={{ uri: itemImage }}

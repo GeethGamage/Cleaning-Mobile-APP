@@ -2,8 +2,7 @@ import { useState } from "react";
 import { router, usePathname } from "expo-router";
 import { View, TouchableOpacity, Text, Image, TextInput, Alert } from "react-native";
 import { icons } from "../constants";
-import {CustomDatePicker} from "../components";
-
+import CustomDatePicker from "./CustomDatePicker"
 
 const SearchInput = ({ initialQuery }) => {
   const pathname = usePathname();
@@ -36,10 +35,10 @@ const SearchInput = ({ initialQuery }) => {
       </TouchableOpacity>
     </View>
     <View className="flex-1 flex space-x-4 w-full h-12 mt-2">
-          <CustomDatePicker
-            onDateChange={(date) => setSelectedDate(date)}
-          />
-        </View>
+              <CustomDatePicker
+                onDateChange={(date) => setSelectedDate(date)}
+              />
+    </View>
     </View>
     
   );

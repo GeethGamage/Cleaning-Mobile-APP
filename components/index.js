@@ -8,6 +8,8 @@ import ListCard from "./ListCard";
 import InfoBox from "./InfoBox";
 import DatePickerField from "./DatePickerField";
 import CustomDatePicker from "./CustomDatePicker"
+import GuideCard from "./GuideCard"
+import PostCard from "./PostCard"
 
 export {
   CustomButton,
@@ -18,5 +20,7 @@ export {
   ListCard,
   InfoBox,
   DatePickerField,
-  CustomDatePicker
+  CustomDatePicker,
+  GuideCard,
+  PostCard
 };

@@ -41,7 +41,7 @@ const CustomDatePicker = ({onDateChange}) => {
       {showPicker && (
         <Modal transparent={true} animationType="fade" visible={showPicker}>
           <View style={styles.modalBackground}>
-            <View style={[styles.pickerContainer, { backgroundColor: "#2d2d37" }]}>
+            <View style={[styles.pickerContainer, { backgroundColor: "rgba(45, 45, 55, 0.8)" }]}>
               {/* Date Picker */}
               <DateTimePicker
                 value={date}
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   closeButtonText: {
-    color: "white",
+    color: "gray",
     fontWeight: "bold",
     fontSize: 16,
   },

@@ -12,6 +12,9 @@ import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
 import calendar from "../assets/icons/calendar.png";
+import report from "../assets/icons/report.png";
+import log from "../assets/icons/log.png";
+import back from "../assets/icons/back.png";
 
 export default {
   play,
@@ -27,5 +30,8 @@ export default {
   logout,
   eyeHide,
   eye,
-  calendar
+  calendar,
+  report,
+  log,
+  back
 };

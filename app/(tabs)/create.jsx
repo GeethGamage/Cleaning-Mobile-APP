@@ -94,7 +94,7 @@ const Create = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView className="px-4 my-6">
-        <Text className="text-2xl text-white font-psemibold">Report Lost And Found</Text>
+        <Text className="text-2xl text-white font-psemibold">Lost And Found</Text>
 
         <NumberFormField
           title="Room No"

@@ -7,15 +7,15 @@ import { icons } from "../../constants";
 
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
-    <View className="flex items-center justify-center gap-1 mt-7">
+    <View className="flex items-center justify-center  mt-6">
       <Image
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        className="w-4 h-6"
+        className="w-5 h-7"
       />
       <Text
-        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`}
+        className={`${focused ? "font-pregular" : "font-pregular"} text-xs`}
         style={{ color: color }}
       >
         {name}
@@ -36,7 +36,7 @@ const TabsLayout = () => {
             backgroundColor: "#161622",
             borderTopWidth: 2,
             borderTopColor: "#232533",
-            height: 74,
+            height: 70,
           },
         }}
       >
@@ -56,15 +56,15 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="bookmark"
+          name="view"
           options={{
-            title: "Bookmark",
+            title: "Log",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.bookmark}
+                icon={icons.log}
                 color={color}
-                name="Save"
+                name="Log"
                 focused={focused}
               />
             ),
@@ -74,13 +74,13 @@ const TabsLayout = () => {
         <Tabs.Screen
           name="create"
           options={{
-            title: "Create",
+            title: "Report",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.plus}
+                icon={icons.report}
                 color={color}
-                name="Add"
+                name="Report"
                 focused={focused}
               />
             ),

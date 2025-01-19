@@ -5,23 +5,10 @@ import { FlatList, Image, RefreshControl, Text, View } from "react-native";
 import { images } from "../../constants";
 import useAppwrite from "../../lib/useAppwrite";
 import { getAllPosts } from "../../lib/appwrite";
-import { EmptyState, SearchInput, ListCard, GuideCard, PostCard } from "../../components";
-import { router } from "expo-router";
+import { EmptyState, SearchInput, ListCard } from "../../components";
 
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
-
-  const publicAreaCheckList = [
-    { id: "1", name: "How to clean the Play Ground", uri: images.playground  },
-    { id: "2", name: "How to clean the Pool Club", uri: images.poolclub  },
-    { id: "3", name: "How to clean the Reception", uri: images.reception  },
-    { id: "4", name: "How to clean the Resturent", uri: images.resturent }
-  ];
-
-  const roomCheckList = [
-    { id: "1", name: "How to clean the Room", uri: images.room  },
-    { id: "2", name: "How to clean the Toilet", uri: images.toilet  }
-  ];
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -31,25 +18,29 @@ const Home = () => {
     setRefreshing(false);
   };
 
+  // one flatlist
+  // with list header
+  // and horizontal flatlist
 
-  const handleCardPress = (id) => {
-    router.push(`/cards/${id}`);
-  };
+  //  we cannot do that with just scrollview as there's both horizontal and vertical scroll (two flat lists, within trending)
 
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
-        data={roomCheckList}
-        keyExtractor={(item) => item.id}
+        data={posts}
+        keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
-          <PostCard
-            itemImage={item.uri}
-            itemName={item.name}
-            onPress={() => handleCardPress(item.id)}
+          <ListCard
+            roomNo={item.room_no}
+            itemName={item.item_name}
+            itemImage={item.item_image}
+            createdDate={item.created_date}
+            creator={item.creator.username}
+            avatar={item.creator.avatar}
           />
         )}
         ListHeaderComponent={() => (
-          <View className="flex  px-4 space-y-6">
+          <View className="flex my-6 px-4 space-y-6">
             <View className="flex justify-between items-start flex-row mb-6">
               <View>
                 <Text className="font-pmedium text-sm text-gray-100">
@@ -69,21 +60,7 @@ const Home = () => {
               </View>
             </View>
 
-
-
-            <View className="w-full flex-1 pt-4 pb-4">
-              <Text className="text-xl font-pmedium text-gray-100 mb-1">
-                Public area Cleaning
-              </Text>
-
-              <GuideCard posts={publicAreaCheckList ?? []} />
-            </View>
-
-  
-              <Text className="text-xl font-pmedium text-gray-100 mt-5">
-                Room Cleaning
-              </Text>
-
+            <SearchInput />
           </View>
         )}
         ListEmptyComponent={() => (
