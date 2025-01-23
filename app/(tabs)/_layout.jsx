@@ -12,7 +12,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        className="w-5 h-7"
+        className="w-7 h-7"
       />
       <Text
         className={`${focused ? "font-pregular" : "font-pregular"} text-xs`}
@@ -55,21 +55,22 @@ const TabsLayout = () => {
             ),
           }}
         />
-        <Tabs.Screen
-          name="view"
+                <Tabs.Screen
+          name="pass"
           options={{
-            title: "Log",
+            title: "Pass",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.log}
+                icon={icons.pass}
                 color={color}
-                name="Log"
+                name="Pass"
                 focused={focused}
               />
             ),
           }}
         />
+
 
         <Tabs.Screen
           name="create"
@@ -81,6 +82,21 @@ const TabsLayout = () => {
                 icon={icons.report}
                 color={color}
                 name="Report"
+                focused={focused}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="view"
+          options={{
+            title: "Log",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.log}
+                color={color}
+                name="Log"
                 focused={focused}
               />
             ),

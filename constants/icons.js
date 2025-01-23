@@ -15,6 +15,19 @@ import calendar from "../assets/icons/calendar.png";
 import report from "../assets/icons/report.png";
 import log from "../assets/icons/log.png";
 import back from "../assets/icons/back.png";
+import info from "../assets/icons/info.png";
+import circle from "../assets/icons/circle.png";
+import tick from "../assets/icons/tick.png";
+import pass from "../assets/icons/pass.png";
+import notification from "../assets/icons/notification.png";
+import image from "../assets/icons/image.png";
+import previous from "../assets/icons/previous.png";
+import next from "../assets/icons/next.png";
+import pencil from "../assets/icons/pencil.png";
+import privacy from "../assets/icons/privacy.png";
+import help from "../assets/icons/help.png";
+import settings from "../assets/icons/settings.png";
+import logut from "../assets/icons/logut.png";
 
 export default {
   play,
@@ -33,5 +46,19 @@ export default {
   calendar,
   report,
   log,
-  back
+  back,
+  info,
+  circle,
+  tick,
+  pass,
+  notification,
+  image,
+  previous,
+  next,
+  pencil,
+  privacy,
+  help,
+  logut,
+  settings
+
 };
