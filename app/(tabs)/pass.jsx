@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Animated, Modal, StyleSheet, Image, ScrollView } from 'react-native';
 import { images,icons } from "../../constants";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
@@ -31,7 +32,7 @@ const passLists = {
       "5:30–7:00: Clean ½ of the restaurant on the lower floor.",
       "7:00–7:30: Operate the floor scrubbers in the pool club.",
       "7:30–8:00: Clean the elderly relaxation area.",
-      "8:00–8:15: Clean passageways.",
+      "8:00–8:15: Clean passage ways.",
       "8:15–8:45: Breakfast.",
       "8:45–9:00: Briefing.",
       "9:00–14:00: Room cleaning.",
@@ -39,16 +40,32 @@ const passLists = {
     ],
   },
   pass3: {
-    title: "Test Data",
+    title: "Public area and room cleaning",
     instructions: [
-      "5:30–6:30: Test Data",
-      "6:30–7:00: Test Data",
-      "7:00–8:00: Test Data",
-      "8:00–8:15: Test Data",
-      "8:15–8:45: Test Data",
-      "8:45–11:00: Test Data",
+        "5:30 - 7:00 Clean ½ of the restaurant on the lower floor.",
+        "7:00 - 7:30 Vacuum in the pool club + fluff cushions.",
+        "7:30 - 8:00 Clean the senior relaxation area.",
+        "8:00 - 8:15 Clean 2 public toilets in the corridor.",
+        "8:15 - 8:45 Breakfast.",
+        "8:45 - 9:00 Briefing.",
+        "9:00 - 14:00 Room cleaning.",
+        "14:00 - 14:30 Lunch."
     ],
   },
+  pass4: {
+    title: "Public area and room cleaning",
+    instructions: [
+      "5:30 - 6:30 Clean the reception and lobby.",
+      "6:30 - 7:00 Clean 2 public toilets outside the pool club.",
+      "7:00 - 8:00 Clean the SPA changing rooms (men's and women's).",
+      "8:00 - 8:15 Dust in the pool club.",
+      "8:15 - 8:45 Breakfast.",
+      "8:45 - 9:00 Briefing.",
+      "9:00 - 14:00 Room cleaning.",
+      "14:00 - 14:30 Lunch."
+    ],
+  },
+  
   // Add other passes here...
 };
 
@@ -68,13 +85,13 @@ const Profile = () => {
   const currentData = passLists[currentPass]; // Get the current pass data
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView className="bg-primary h-full items-center justify-between pt-10 px-4">
       {/* Render buttons dynamically */}
       <View className="mt-10 w-4/5">
       <MenuItem onPress={() => openModal("pass1")} label="Pass 1" label2="5.30 AM - 2.30 PM" />
         <MenuItem onPress={() => openModal("pass2")} label="Pass 2" label2="5.30 AM - 2.30 PM" />
         <MenuItem onPress={() => openModal("pass3")} label="Pass 3" label2="5.30 AM - 2.30 PM" />
-        <MenuItem  label="Pass 4" label2="5.30 AM - 2.30 PM"/>
+        <MenuItem onPress={() => openModal("pass4")} label="Pass 4" label2="5.30 AM - 2.30 PM" />
         <MenuItem  label="Pass 5" label2="3.00 PM - 9.00 PM"/>
         <MenuItem  label="Pass 6" label2="6.00 PM - 2.30 PM"/>
         <MenuItem label="Pass 7" label2="8.45 AM - 2.15 PM"/>
@@ -119,7 +136,7 @@ const Profile = () => {
           </View>
         </View>
       </Modal>
-    </View>
+      </SafeAreaView> 
   );
 };
 
@@ -200,6 +217,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 15,
     lineHeight: 24,
+    paddingLeft:5
   },
   closeButton: {
     backgroundColor: '#D4AF37',

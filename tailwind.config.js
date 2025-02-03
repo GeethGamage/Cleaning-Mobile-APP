@@ -10,6 +10,7 @@ module.exports = {
         place: "#CDCDE0",
         secondary: {
           DEFAULT: "#D4AF37",
+          50:"D4AF37",
           100: "#FF9001",
           200: "#FF8E01",
         },

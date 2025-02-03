@@ -12,6 +12,7 @@ import fireEscape from "../assets/images/public_clean/fire_escape.png";
 import room from "../assets/images/room/room.jpg";
 import toilet from "../assets/images/room/toilet.jpg";
 import playground from "../assets/images/public_clean/playground.png";
+import toilet_towel from "../assets/images/room/toilet_towel.jpg";
 
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, resturent, reception, poolclub, fireEscape, playground, room, toilet};
+export default { profile, thumbnail, cards, path, logo, logoSmall, empty, resturent, reception, poolclub, fireEscape, playground, room, toilet, toilet_towel};

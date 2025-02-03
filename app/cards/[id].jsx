@@ -13,10 +13,14 @@ const Cards = () => {
   const [completedSteps, setCompletedSteps] = useState([]);
 
   const [isModalVisible, setModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState({ image: null,  description: '', title:'' });
 
-  const handleInfoPress = () => {
+
+  const handleInfoPress = (title, description, image) => {
+    setModalContent({ title, description, image });
     setModalVisible(true);
   };
+  
 
   const closeModal = () => {
     setModalVisible(false);
@@ -36,8 +40,8 @@ const Cards = () => {
   const List1 = [
     { id: "1", name: "Open windows (if possible) to let fresh air in while cleaning.", image:false},
     { id: "2",name: "Remove used bedding and towels, placing them in the dirty wagon.", image:false},
-    { id: "3", name: "Replace linens and make the bed neatly with fresh sheets and pillowcases.", image:true},
-    { id: "4",name: "Scrub the sink, toilet, and shower thoroughly. Replace toiletries and towels, and disinfect surfaces." , image:false},
+    { id: "3", name: "Replace linens and make the bed neatly with fresh sheets and pillowcases.", image:true, source: images.room, sourceTitle: "Make bed properly", sourceDes: "Replace linens and make the bed neatly with fresh sheets and pillowcases."},
+    { id: "4",name: "Scrub the sink, toilet, and shower thoroughly. Replace toiletries and towels, and disinfect surfaces." , image:true, source: images.toilet_towel, sourceTitle: "Fold the towels on the Sink", sourceDes: "Please do with attention to detail, with the towels neatly folded, placed nicely on top of each other, and the lines straight."},
     { id: "5",name: "Dust all surfaces, including furniture, light fixtures, and bed frame.", image:false},
     { id: "6",name: "Vacuum carpets or rugs and mop toilet floors." , image:false},
     { id: "7",name: "Check for missed spots, adjust curtains, and ensure the room smells fresh and inviting." , image:false},
@@ -45,12 +49,12 @@ const Cards = () => {
   ];
 
   const List2 = [
-    { id: "1", name: "Cleaning step 1", image:true},
-    { id: "2",name: "Cleaning step 2", image:true},
-    { id: "3", name: "Cleaning step 3", image:true},
-    { id: "4",name: "Cleaning step 4" , image:true},
-    { id: "5",name: "Cleaning step 5", image:true},
-    { id: "6",name: "Cleaning step 6" , image:true},
+    { id: "1", name: "Cleaning step 1", image:false},
+    { id: "2",name: "Cleaning step 2", image:false},
+    { id: "3", name: "Cleaning step 3", image:false},
+    { id: "4",name: "Cleaning step 4" , image:true, source: images.room, sourceTitle: "Title", sourceDes: "Enter description here"},
+    { id: "5",name: "Cleaning step 5", image:false},
+    { id: "6",name: "Cleaning step 6" , image:false},
   ];
 
   const getObjectById = (id) => {
@@ -91,9 +95,9 @@ const Cards = () => {
     );
   };
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeAreaView className="bg-primary h-full flex  px-4 space-y-6">
       
-      <View className="flex  px-4 space-y-6">
+      <View>
       <View className="flex justify-between items-center flex-row mb-4">
           <TouchableOpacity onPress={() => router.back()}>
             <Image
@@ -111,7 +115,6 @@ const Cards = () => {
       
 
         <View className="flex  items-start flex-row">
-
           <View className="w-[88px] h-[108px] rounded-lg border border-secondary flex justify-center items-center p-0.5">
             <Image
               source={result.uri}
@@ -156,8 +159,7 @@ const Cards = () => {
           ))}
         </View>
       )}
-
-      
+    </View>
       
       <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 24, marginBottom: 12, color: "white" }}>
         Cleanup Steps
@@ -186,7 +188,7 @@ const Cards = () => {
               {/* Circular Icon */}
 
               </TouchableOpacity>
-              <View className="flex-1 pr-2"> 
+              <View className="flex-1 px-2"> 
                   <Text
                     style={{
                       color: completedSteps.includes(index) ? "#707070" : "#E0E0E0",
@@ -200,7 +202,7 @@ const Cards = () => {
 
 
               {item.image && (
-               <TouchableOpacity onPress={handleInfoPress}>
+               <TouchableOpacity onPress={() => handleInfoPress(item.sourceTitle, item.sourceDes, item.source)}>
                <Image
                  source={icons.image}
                  className="w-6 h-6"
@@ -212,7 +214,8 @@ const Cards = () => {
             </View>
         )}
       />
-      </View>
+     
+     
 
       <View style={styles.container}>
       {/* Bottom Sheet Modal */}
@@ -224,15 +227,15 @@ const Cards = () => {
           <View style={styles.card}>
             {/* Image Section */}
             <Image
-              source={images.room} // Replace with your image source
+              source={modalContent.image} // Replace with your image source
               style={styles.cardImage}
             />
 
             {/* Text Content */}
             <View style={styles.cardContent}>
-              <Text style={styles.cardTitle}>Make the bed nicely</Text>
+              <Text style={styles.cardTitle}>{modalContent.title}</Text>
               <Text style={styles.cardDescription}>
-              Replace linens and make the bed neatly with fresh sheets and pillowcases.
+              {modalContent.description}
               </Text>
             </View>
 

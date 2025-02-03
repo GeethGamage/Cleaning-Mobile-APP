@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image, Modal, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Image, Modal, StyleSheet, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { icons } from "../constants";
 
@@ -38,7 +38,7 @@ const CustomDatePicker = ({onDateChange}) => {
       </View>
 
       {/* Date Picker Modal */}
-      {showPicker && (
+      {Platform.OS === "ios" && showPicker && (
         <Modal transparent={true} animationType="fade" visible={showPicker}>
           <View style={styles.modalBackground}>
             <View style={[styles.pickerContainer, { backgroundColor: "rgba(45, 45, 55, 0.8)" }]}>
@@ -63,6 +63,19 @@ const CustomDatePicker = ({onDateChange}) => {
             </View>
           </View>
         </Modal>
+      )}
+
+      {/* Date Picker directly shown for Android */}
+      {Platform.OS === "android" && showPicker && (
+        <DateTimePicker
+          value={date}
+          mode="date"
+          display="spinner"
+          onChange={handleDateChange}
+          textColor="black"
+          maximumDate={new Date()} // Disable future dates
+          style={{ width: "100%" }}
+        />
       )}
     </View>
   );

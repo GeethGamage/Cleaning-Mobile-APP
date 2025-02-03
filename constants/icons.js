@@ -28,6 +28,8 @@ import privacy from "../assets/icons/privacy.png";
 import help from "../assets/icons/help.png";
 import settings from "../assets/icons/settings.png";
 import logut from "../assets/icons/logut.png";
+import plus_icon from "../assets/icons/plus_icon.png";
+import chatting from "../assets/icons/chatting.png";
 
 export default {
   play,
@@ -59,6 +61,8 @@ export default {
   privacy,
   help,
   logut,
-  settings
+  settings,
+  plus_icon,
+  chatting
 
 };

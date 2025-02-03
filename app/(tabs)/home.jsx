@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList, Image, RefreshControl, Text, View } from "react-native";
+import { FlatList, Image, RefreshControl, Text, View , TouchableOpacity} from "react-native";
 
 import { images , icons} from "../../constants";
 import useAppwrite from "../../lib/useAppwrite";
@@ -69,12 +69,22 @@ const Home = () => {
                   </View>
                 </View>
 
-  <Image
-    source={icons.notification}
-    className="w-7 h-7 mr-4"
-    resizeMode="contain"
-  />
-</View>
+                <TouchableOpacity onPress={() => alert('Notification Empty')}>
+                <Image
+                  source={icons.notification}
+                  className="w-7 h-7 ml-12"
+                  resizeMode="contain"
+                />
+                </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => alert('Messages Empty')}>
+                <Image
+                  source={icons.chatting}
+                  className="w-7 h-7 mr-4"
+                  resizeMode="contain"
+                />
+                </TouchableOpacity>
+              </View>
 			
       
             <View className=" w-full h-[5px] bg-black my-2" />
@@ -104,7 +114,28 @@ const Home = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       />
+      <View>
+        <TouchableOpacity
+          className="absolute bottom-4 right-6 bg-secondary w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+          style={{
+            shadowColor: '#000', // Black shadow
+            shadowOffset: { width: 0, height: 4 }, // Vertical shadow
+            shadowOpacity: 0.8, // Opacity of shadow
+            shadowRadius: 5, // Soft blur
+            elevation: 6, // Android shadow
+          }}
+          onPress={() => alert('Add post clicked!')}
+          >
+            <Image
+              source={icons.plus_icon}
+              className="w-5 h-5"
+              resizeMode="contain"
+            />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
+
+        
   );
 };
 

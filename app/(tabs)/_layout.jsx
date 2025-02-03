@@ -15,8 +15,15 @@ const TabIcon = ({ icon, color, name, focused }) => {
         className="w-7 h-7"
       />
       <Text
-        className={`${focused ? "font-pregular" : "font-pregular"} text-xs`}
-        style={{ color: color }}
+        style={{
+          color: color,
+          fontSize: 12, // Smaller font size to fit text in one line
+          marginTop: 4,
+          fontFamily: "Arial", // Adjust font family for better consistency
+          width: 60, // Limit the width of the text container to avoid wrapping
+          textAlign: "center", // Ensure text is centered
+        }}
+        numberOfLines={1} // Ensure the text is limited to one line
       >
         {name}
       </Text>
@@ -58,13 +65,13 @@ const TabsLayout = () => {
                 <Tabs.Screen
           name="pass"
           options={{
-            title: "Pass",
+            title: "Passes",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.pass}
                 color={color}
-                name="Pass"
+                name="Passes"
                 focused={focused}
               />
             ),
